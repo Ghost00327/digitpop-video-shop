@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="subscriptionInfo">
+    <h3 class="header">Subscription Details<mat-icon (click)="accountHelp()">help</mat-icon></h3>
+    <div class="productName">
+      <h5>Product Name : {{ subscription.productName }}</h5>
+    </div>
+    <div class="planName">
+      <h5>Plan Name : {{ subscription.planName }}</h5>
+    </div>
+    <div class="status">
+      <h5>Status : {{ subscription.status }}</h5>
+    </div>
+    <div class="uid">
+      <h5>Customer ID : {{ subscription.customerUniqueId }}</h5>
+    </div>
+    <div class="nextBillingAmount">
+      <h5>Next Billing Amount : {{ subscription.nextBillingAmount }}</h5>
+    </div>
+    <div class="nextBillingDate">
+      <h5>Next Billing Date: {{ subscription.nextBillingDate | date }}</h5>
+    </div>
+    <div class="nextCycleRecurringBillingAmount">
+      <h5>
+        Next Cycle Recurring Billing Amount:
+        {{ subscription.nextCycleRecurringBillingAmount }}
+      </h5>
+    </div>
+    <div class="usage">
+      <h5>Usage : {{ usage }}</h5>
+    </div>
+    <div class="cancelSubscription">
+      <button
+        mat-raised-button
+        color
+        color="primary"
+        (click)="cancelSubscription()"
+      >
+        Cancel Subscription
+      </button>
+    </div>
+    <!-- <div class="pauseSubscription">
+      <button mat-raised-button color color="primary" (click)="pauseSubscription()">Pause Subscription</button>
+    </div> -->
+    <div class="logout">
+      <button mat-raised-button color color="primary" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="branding">
+    <h3 class="brandingHeader">Branding</h3>
+    <input
+      type="file"
+      style="display: none"
+      #fileInput
+      accept="image/*"
+      (change)="onChangeFileInput()"
+    />
+    <div class="iconImage" *ngIf="currentUser.icon?.url == null">
+      <h5>No icon selected</h5>
+    </div>
+    <div class="iconImage" *ngIf="currentUser.icon?.url != null">
+      <div class="thumbnail">
+        <img [src]="currentUser.icon?.url" />
+      </div>
+    </div>
+    <div class="iconButton">
+      <button
+        class="iconButton"
+        mat-raised-button
+        color="primary"
+        class="file-select-button"
+        (click)="onClickFileInputButton()"
+      >
+        <mat-icon>attach_file</mat-icon>
+        Select icon
+      </button>
+    </div>
+  </div>
+</div>
+<!-- <a href="javascript:void(0)" data-billsby-type="account"  [attr.data-billsby-customer]="getCid()" [attr.data-billsby-subscription]="getSid()">Manage account</a>
+<a href="javascript:void(0)" data-billsby-type="account" data-billsby-action="personaldetails">Change personal details</a> -->

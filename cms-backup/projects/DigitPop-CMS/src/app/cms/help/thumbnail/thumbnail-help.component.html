@@ -1,0 +1,25 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Thumbnail</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Select an image that will be displayed before the shoppable video is launched.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600748056/Capture_Thumbnail_rqqrso.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+

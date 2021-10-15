@@ -1,0 +1,30 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Account Information</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            The account page lists information about your subscription, as well
+            as branding features. Subscription information includes the plan for
+            the account, billing information, and the usage of the plan against
+            the capacity. It also provides the ability to cancel your
+            subscription and logout. For branding, it provides the ability to
+            upload your own icon that will be displayed on the browser tab in
+            the shoppable video player.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1603207266/Capture_Account_dsk1hz.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

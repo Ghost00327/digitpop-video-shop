@@ -1,0 +1,153 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  font-family: Ubuntu;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.subscriptionInfo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(13, 1fr);
+  grid-column: 1/6;
+  grid-row: 2/6;
+  width: 100%;
+}
+
+.branding {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(13, 1fr);
+  grid-column: 7/13;
+  grid-row: 2/10;
+  width: 100%;
+}
+
+.iconImage {
+  grid-column: 2/6;
+  grid-row: 3/4;
+  width: 100%;
+}
+
+.iconButton {
+  grid-column: 2/6;
+  grid-row: 5/6;
+  width: 100%;
+}
+
+.browserTitle {
+  grid-column: 2/6;
+  grid-row: 7/8;
+  width: 100%;
+}
+
+.file-name {
+  font-family: Ubuntu;
+  grid-column: 2/6;
+  grid-row: 5/6;
+  width: 100%;
+}
+
+.header {
+  grid-column: 2/6;
+  grid-row: 2/3;
+  width: 100%;
+}
+
+.brandingHeader {
+  grid-column: 2/6;
+  grid-row: 1/2;
+  width: 100%;
+}
+
+.productName {
+  grid-column: 2/6;
+  grid-row: 3/4;
+  width: 100%;
+}
+
+.planName {
+  grid-column: 2/6;
+  grid-row: 4/5;
+  width: 100%;
+}
+
+.status {
+  grid-column: 2/6;
+  grid-row: 5/6;
+  width: 100%;
+}
+
+.uid {
+  grid-column: 2/6;
+  grid-row: 6/7;
+  width: 100%;
+}
+
+.nextBillingAmount {
+  grid-column: 2/6;
+  grid-row: 7/8;
+  width: 100%;
+}
+
+.nextBillingDate {
+  grid-column: 2/6;
+  grid-row: 8/9;
+  width: 100%;
+}
+
+.nextCycleRecurringBillingAmount {
+  grid-column: 2/6;
+  grid-row: 9/10;
+  width: 100%;
+}
+
+.usage {
+  grid-column: 2/6;
+  grid-row: 10/11;
+  width: 100%;
+}
+
+.cancelSubscription {
+  grid-column: 2/6;
+  grid-row: 11/12;
+  width: 100%;
+}
+
+.pauseSubscription {
+  grid-column: 2/6;
+  grid-row: 12/13;
+  width: 100%;
+}
+
+.logout {
+  margin-top: 20px;
+  grid-column: 2/6;
+  grid-row: 13/14;
+  width: 100%;
+}
+
+.thumbnail {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}

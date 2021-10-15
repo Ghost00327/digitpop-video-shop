@@ -1,0 +1,224 @@
+<div class="container">
+
+
+  <img
+    class="thumbnail"
+    (click)="onStartVideo()"
+    [src]="ad?.thumbnail.url"
+    [hidden]="!showThumbnail"
+  />
+  <video
+    [hidden]="!showVideo"
+    style="background-color: #202020"
+    class="adplay_vid"
+    #videoPlayer
+    playsinline
+    crossorigin="anonymous"
+    [src]="ad?.media.url"
+    type="video/mp4"
+    (ended)="onEnded()"
+    (click)="onShowProduct()"
+  ></video>
+  <div [hidden]="!showCanvas">
+    <canvas #canvas> </canvas>
+  </div>
+
+  <div
+    id="main_product_grid"
+    class="main_product_grid"
+    [hidden]="!showCanvas "
+  >
+    <div id="main_head" class="nav">
+      <div class="navelements">
+        <div
+          class="button_resume_grid button_base button_resume"
+          (click)="onResumeVideo()"
+        >
+          <div></div>
+          Resume
+        </div>
+
+        <div
+          *ngIf="viewState == 'ProductGroup'"
+          class="button_locate_grid button_base button_locate"
+          (click)="onSeekAndPlay()"
+        >
+          <div></div>
+          Seek and play
+        </div>
+
+        <div
+          *ngIf="viewState == 'ProductGroup'"
+          class="button_prev_grid button_base button_prev"
+          [ngClass]="{ disabled: disablePrevious }"
+          (click)="onPreviousProductGroup()"
+        >
+          <div></div>
+          Previous
+        </div>
+
+        <div
+          *ngIf="viewState == 'ProductGroup'"
+          class="button_all_grid button_base button_all"
+          (click)="onAllProductGroupsClick()"
+        >
+          <div></div>
+          All groups
+        </div>
+
+        <div
+          *ngIf="viewState == 'ProductGroup'"
+          class="button_next_grid button_base button_next"
+          (click)="onNextProductGroup()"
+          [ngClass]="{ disabled: disableNext }"
+        >
+          <div></div>
+          Next
+        </div>
+
+        <div
+          *ngIf="viewState == 'Product' && showBackToGroupButton() == true"
+          class="button_up_grid button_base button_up"
+          (click)="onBackToGroup()"
+        >
+          <div></div>
+          Back to group
+        </div>
+
+        <div class="button_start_grid button_base button_start" (click)="onExit()">
+          <div></div>
+          Close
+        </div>
+
+        <!-- <div class="button_share_grid button_base button_share">
+          <div><i class="fa fa-share-alt"></i></div>
+          Share
+        </div> -->
+
+        <div class="button_help_grid">
+          <div><mat-icon (click)="help()">help</mat-icon></div>
+        </div>
+
+        <!-- <div class="head_back">
+          <div (click)="onResumeVideo()" class="button_base button_resume">
+            <div></div>
+          </div>
+        </div> -->
+        <div *ngIf="viewState == 'ProductGroup'" class="title">
+          {{ currentProductGroup?.title }}
+        </div>
+        <div *ngIf="viewState == 'Product'" class="title">
+          {{ currentProduct.name }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ng-container #viewContainer></ng-container>
+    </div>
+
+    <!-- NOTE :  Insert a div here to encapsulate the product screen and product group screen.
+         Base the visibility -->
+    <div class="productInfoSubTitle" *ngIf="viewState == 'Product'">
+      {{ currentProduct?.subtitle }}
+    </div>
+    <div class="productInfoPrice" *ngIf="viewState == 'Product'">
+      {{ currentProduct?.price | currency }}
+    </div>
+    <button
+      class="productInfoBuyNow"
+      mat-raised-button
+      (click)="onBuyNow()"
+      *ngIf="viewState == 'Product'"
+    >
+      Buy Now
+    </button>
+
+    <div
+      class="simplebar-scrollbar"
+      data-simplebar
+      class="productInfoDescription"
+      *ngIf="viewState == 'Product'"
+    >
+      <p class="productInfoDescription">{{ currentProduct?.description }}</p>
+    </div>
+
+    <img
+      *ngIf="viewState == 'Product'"
+      class="productImageMain"
+      (click)="openDialog()"
+      [src]="selectedImage?.url"
+    />
+
+    <div class="productImageThumbnailGrid" *ngIf="viewState == 'Product'">
+      <ul style="list-style-type: none">
+        <li *ngFor="let thumbnail of currentProduct?.images">
+          <img
+            class="productImageThumbnail"
+            [src]="thumbnail?.url"
+            (click)="onClickThumbnail(thumbnail)"
+          />
+        </li>
+      </ul>
+    </div>
+    <!-- End of Product Section  -->
+
+    <!-- Start of Product Group Section  -->
+
+    <div class="pgProductsList" *ngIf="viewState == 'ProductGroup'">
+      <cdk-virtual-scroll-viewport
+        itemSize="50"
+        minBufferPx="200"
+        maxBufferPx="400"
+        class="pgProductsList"
+      >
+        <div
+          class="productsFlexContainer"
+          fxLayoutGap="5px"
+          fxLayoutAlign="center"
+        >
+          <div
+            (click)="onProductClick(pt)"
+            class="productTemplate"
+            *cdkVirtualFor="let pt of this.currentProductGroup?.products"
+          >
+            <img class="productTemplate_Image" [src]="pt.images[0]?.url" />
+            <span class="productTemplate_Name_Container">{{ pt.name }}</span>
+            <div class="productTemplate_Description_Container">
+              <p class="productTemplate_Description">{{ pt.description }}</p>
+            </div>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <div class="pgProductsList" *ngIf="viewState == 'AllProductGroups'">
+      <cdk-virtual-scroll-viewport
+        itemSize="50"
+        minBufferPx="200"
+        maxBufferPx="400"
+        class="pgProductsList"
+      >
+        <div
+          class="productsFlexContainer"
+          fxLayoutGap="5px"
+          fxLayoutAlign="center"
+        >
+          <div
+            (click)="onProductGroupClick(pg)"
+            class="allProductGroupTemplate"
+            *cdkVirtualFor="let pg of this.ad.productGroupTimeLine"
+          >
+            <img
+              class="allProductGroupImage allPgthumbnail"
+              [src]="pg.thumbnail.url"
+            />
+            <span class="allProductGroupTitle">{{ pg.title }}</span>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <!-- End of Product Group Section  -->
+  </div>
+</div>

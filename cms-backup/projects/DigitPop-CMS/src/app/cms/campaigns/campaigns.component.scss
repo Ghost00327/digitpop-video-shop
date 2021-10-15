@@ -1,0 +1,71 @@
+.full-width-table {
+  width: 100%;
+}
+
+.mat-column-budgetAmount {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 28% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+
+.mat-header-cell {
+  padding: 0px 20px 0px 20px;
+}
+
+.mat-cell {
+  padding: 0px 20px 0px 20px;
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+.mat-row:hover {
+  transition: ease 500ms;
+  // transition: all 1s ease 500ms;
+  background-color: gray;
+}
+
+section {
+  display: table;
+  margin: 8px;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+}
+
+.example-button-row button {
+  display: table-cell;
+  margin-right: 8px;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}

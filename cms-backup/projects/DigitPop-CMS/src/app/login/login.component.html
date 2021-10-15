@@ -1,0 +1,70 @@
+<div mat-dialog-content style="overflow: auto, width: auto height:250px">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div>
+        <mat-radio-group
+          aria-label="Select an option"
+          (change)="onChange($event)"
+          name="role"
+        >
+          <mat-radio-button value="1" class="example-margin check" checked
+            >As a consumer</mat-radio-button
+          >
+          <mat-radio-button value="2" class="example-margin check"
+            >As a business</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+        <mat-icon matPrefix aria-hidden="false" aria-label="Email"
+          >email</mat-icon
+        >
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group">
+      <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+        <mat-icon matPrefix aria-hidden="false" aria-label="Lock"
+          >lock</mat-icon
+        >
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button [disabled]="loading" class="btn btn-primary">
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Login
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+      <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>
+    </div>
+  </form>
+</div>

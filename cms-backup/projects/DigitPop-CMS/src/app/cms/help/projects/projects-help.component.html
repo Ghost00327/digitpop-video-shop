@@ -1,0 +1,73 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Projects</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            A project is used to generate a shoppable video and the projects
+            page lists all of your projects with analytics. All fields are
+            sortable and can be searched by entering text in the filter. Click
+            on the + button to start a new project in the project wizard. Click
+            on the edit icon in any of the project rows to edit the project in
+            the wizard.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600568069/Projects_xk87qs.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Analytics</ng-template>
+      <div>
+        <div>
+          <p>
+            Each project displays analytics of marketing insights. Click on a
+            project to expand the analytics to a product group level. Each
+            product group is also expandable to show product level analytics.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600571747/Capture_Analytics_PGs_f2vahn.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Analytics - Products</ng-template>
+      <div>
+        <div>
+          <p>
+            The product analytics show how many times a product has been
+            selected and also how many times the 'Buy Now' button has been
+            pressed to navigate to the shopping cart.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600573545/Capture_Analytics_Products_zwfra8.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

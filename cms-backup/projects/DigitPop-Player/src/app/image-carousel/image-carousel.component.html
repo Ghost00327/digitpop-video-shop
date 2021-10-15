@@ -1,0 +1,13 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<div mat-dialog-content data-simplebar class="container">
+  <lib-ngx-image-zoom
+    [thumbImage]="url"
+    [fullImage]="url"
+    [magnification]="1"
+    [enableScrollZoom]="true"
+    [enableLens]="true"
+    [lensWidth]="200"
+  ></lib-ngx-image-zoom>
+</div>

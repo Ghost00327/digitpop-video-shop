@@ -1,0 +1,270 @@
+<div class="container">
+  <mat-vertical-stepper [linear]="false" #stepper class="stepper">
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Ad Unit Project</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Campaign Help"
+          (click)="onTitleHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <div class="project">
+          <mat-form-field class="project">
+            <mat-label>Project</mat-label>
+            <mat-select formControlName="project" required>
+              <mat-option>--</mat-option>
+              <mat-option
+                *ngFor="let project of projects"
+                [value]="project._id"
+              >
+                {{ project.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Category</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Campaign Help"
+          (click)="onTitleHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <div class="project">
+          <mat-form-field class="project">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" required>
+              <mat-option>--</mat-option>
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category._id"
+              >
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup" #stepTitle>
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Title</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Campaign Help"
+          (click)="onTitleHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <div fxLayout="column">
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              placeholder="Title of Campaign"
+              formControlName="title"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Budget Amount</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Budget Amount</mat-label>
+            <input
+              matInput
+              formControlName="budgetAmount"
+              placeholder="Enter budget amount here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Start Date</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            placeholder="Start Date"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Question</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Question</mat-label>
+            <input
+              matInput
+              formControlName="verificationQuestion"
+              placeholder="Enter question here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Correct Answer</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Correct Answer</mat-label>
+            <input
+              matInput
+              formControlName="verificationAnswer"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Wrong Answer 1</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Wrong Answer 1</mat-label>
+            <input
+              matInput
+              formControlName="verificationWrongAnswer1"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Wrong Answer 2</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Wrong Answer 2</mat-label>
+            <input
+              matInput
+              formControlName="verificationWrongAnswer2"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Wrong Answer 3</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Wrong Answer 3</mat-label>
+            <input
+              matInput
+              formControlName="verificationWrongAnswer3"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Wrong Answer 4</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Wrong Answer 4</mat-label>
+            <input
+              matInput
+              formControlName="verificationWrongAnswer4"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="campaignFormGroup">
+      <form [formGroup]="campaignFormGroup">
+        <ng-template matStepLabel>Verification Wrong Answer 4</ng-template>
+        <div>
+          <mat-form-field>
+            <mat-label>Wrong Answer 4</mat-label>
+            <input
+              matInput
+              formControlName="verificationWrongAnswer4"
+              placeholder="Enter answer here"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+
+      <button
+        type="button"
+        mat-icon-button
+        color="primary"
+        aria-label="Select Thumbnail Help"
+      >
+        <mat-icon>help</mat-icon>
+      </button>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+    <mat-vertical-stepper> </mat-vertical-stepper
+  ></mat-vertical-stepper>
+</div>

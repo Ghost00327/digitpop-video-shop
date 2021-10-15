@@ -1,0 +1,306 @@
+.bgimg {
+  background-image: url("../../assets/img/dgpop_back.png");
+  background-size: 50%;
+  background-position: right 200px bottom 10px;
+}
+
+.planpanel {
+  grid-row: 1/20;
+  grid-column: 1/7;
+  background-image: url("../../assets/img/dp_panel_background.png");
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+
+
+.exampleShoppableVideoiFrame {
+  width: 100%;
+  height: 100%;
+}
+
+.planpanelheader {
+  grid-row: 1/4;
+  grid-column: 1/11;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.planpanelsubtitle {
+  grid-row: 5/6;
+  grid-column: 1/11;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+
+.planpanelbandwidth {
+  grid-row: 6/7;
+  grid-column: 1/11;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.planpanelprice {
+  grid-row: 7/9;
+  grid-column: 1/11;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.planpanelbutton {
+  grid-row: 9/10;
+  grid-column: 2/10;
+  width: 100%;
+  height: 100%;
+}
+
+.trialText {
+  text-align: center;
+}
+#checkout{
+  width: 0px;
+  height: 0px;
+}
+.videocontainer1 {
+  grid-row: 2/18;
+  grid-column: 1/20;
+  width: 100%;
+  height: 100%;
+  margin-right:20px;
+}
+
+.videocontainer2 {
+  grid-row: 6/9;
+  grid-column: 11/20;
+  width: 100%;
+  height: 100%;
+}
+.videocontainer {
+  grid-row: 2/5;
+  grid-column: 2/20 !important;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+@media only screen and (min-height: 0px) and (max-height: 568px) {
+  .container {
+    height: 600vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .titleFont {
+    font-size: medium;
+  }
+
+  .priceFont {
+    font-size: medium;
+  }
+
+  .subtitleFont {
+    font-size: small;
+  }
+}
+
+@media only screen and (min-height: 569px) {
+  .container {
+    height: 200vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .titleFont {
+    font-size: large;
+  }
+
+  .priceFont {
+    font-size: large;
+  }
+
+  .subtitleFont {
+    font-size: medium;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .titleFont {
+    font-size: x-large;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .subtitleFont {
+    font-size: large;
+  }
+
+  .priceFont {
+    font-size: x-large;
+  }
+
+  .planpanelbutton {
+    grid-row: 9/10;
+    grid-column: 2/10;
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+
+  .exampleVideoText {
+    font-size: large;
+  }
+
+  .exampleShoppableTitle {
+    grid-row: 8/8;
+    grid-column: 5/16;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .exampleShoppableVideo {
+    grid-row: 6/9;
+    grid-column: 5/16;
+    width: auto;
+    height: auto;
+    z-index: 999999;
+  }
+
+  // .videocontainer {
+  //   grid-row: 2/6;
+  //   grid-column: 5/16;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+
+  .planpanel {
+    grid-row: 1/20;
+    grid-column: 1/7;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+
+  .planpanel2 {
+    grid-row: 1/20;
+    grid-column: 8/14;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+
+  .planpanel3 {
+    grid-row: 1/20;
+    grid-column: 15/21;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+
+  .plancontainer {
+    grid-row: 14/18;
+    grid-column: 5/16;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  .videocontainer {
+    grid-row: 2/4;
+    grid-column: 5/16;
+    width: 100%;
+    height: 100%;
+  }
+
+  .exampleVideoText {
+    font-size: smaller;
+  }
+
+  .exampleShoppableTitle {
+    grid-row: 4/4;
+    grid-column: 5/16;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .exampleShoppableVideo {
+    grid-row: 6/9;
+    grid-column: 5/16;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+  }
+
+  .planpanel {
+    grid-row: 1/6;
+    grid-column: 1/21;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+  .planpanel2 {
+    grid-row: 7/12;
+    grid-column: 1/21;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+
+  .planpanel3 {
+    grid-row: 13/18;
+    grid-column: 1/21;
+    background-image: url("../../assets/img/dp_panel_background.png");
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    justify-items: center;
+  }
+
+  .plancontainer {
+    grid-row: 9/18;
+    grid-column: 5/16;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+}
+
+// @media only screen and (min-width: 897px) and (max-width: 1059px) {
+// }
+
+// @media only screen and (min-width: 1060px) and (max-width: 1366px) {
+// }
+
+// @media only screen and (min-width: 1367px) {
+// }

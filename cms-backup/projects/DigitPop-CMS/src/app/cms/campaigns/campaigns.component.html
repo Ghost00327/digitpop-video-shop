@@ -1,0 +1,65 @@
+<div>
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef><span matTooltip="Name of the campaign."> Name </span></th>
+    <td  mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="budgetAmount">
+    <th mat-header-cell *matHeaderCellDef><span matTooltip="Daily budget of campaign."> Budget </span></th>
+    <td mat-cell *matCellDef="let element"> {{element.budgetAmount}} </td>
+  </ng-container>
+
+  <ng-container  matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef><span matTooltip="Status of campaign. Enabled/Paused"> Status </span> </th>
+    <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="impressionCount">
+    <th class="text-align-right" mat-sort-header mat-header-cell *matHeaderCellDef><span matTooltip="Campaign Impressions.  Measured by how many times an ad has been initiated."> Impr </span> </th>
+    <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.impressionCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="engagementCount">
+    <th class="text-align-right" mat-sort-header mat-header-cell *matHeaderCellDef> <span matTooltip="The number times an ad has been run the full length and any gamification has been fulfilled."> Complete </span> </th>
+    <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.engagementCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pauseCount">
+    <th class="text-align-right" mat-sort-header mat-header-cell *matHeaderCellDef> <span matTooltip="The number of times an ad has been clicked to pause and display products."> Pause </span> </th>
+    <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.pauseCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="buyNowCount">
+    <th class="text-align-right" mat-sort-header mat-header-cell *matHeaderCellDef> <span matTooltip="The number of times a link to a product shopping cart has been clicked."> Buy Now </span> </th>
+    <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.buyNowCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="salesCount">
+    <th class="text-align-right" mat-sort-header mat-header-cell *matHeaderCellDef> <span matTooltip="The number of sales generated from this ad."> Sales </span> </th>
+    <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.salesCount}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

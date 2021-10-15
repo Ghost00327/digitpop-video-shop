@@ -1,0 +1,273 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a8cff588-234a-45be-97bd-bbb104f7e462"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "DigitPop-CMS": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/DigitPop-CMS",
+      "sourceRoot": "projects/DigitPop-CMS/src",
+      "prefix": "DigitPop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/DigitPop-CMS",
+            "index": "projects/DigitPop-CMS/src/index.html",
+            "main": "projects/DigitPop-CMS/src/main.ts",
+            "polyfills": "projects/DigitPop-CMS/src/polyfills.ts",
+            "tsConfig": "projects/DigitPop-CMS/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/DigitPop-CMS/src/favicon.ico",
+              "projects/DigitPop-CMS/src/assets"
+            ],
+            "styles": [
+              "node_modules/shepherd.js/dist/css/shepherd.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "projects/DigitPop-CMS/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/DigitPop-CMS/src/environments/environment.ts",
+                  "with": "projects/DigitPop-CMS/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/DigitPop-CMS/src/environments/environment.ts",
+                  "with": "projects/DigitPop-CMS/src/environments/environment.staging.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "DigitPop-CMS:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "DigitPop-CMS:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "DigitPop-CMS:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/DigitPop-CMS/src/test.ts",
+            "polyfills": "projects/DigitPop-CMS/src/polyfills.ts",
+            "tsConfig": "projects/DigitPop-CMS/tsconfig.spec.json",
+            "karmaConfig": "projects/DigitPop-CMS/karma.conf.js",
+            "assets": [
+              "projects/DigitPop-CMS/src/favicon.ico",
+              "projects/DigitPop-CMS/src/assets"
+            ],
+            "styles": [
+              "./node_modules/shepherd.js/dist/css/shepherd-theme-dark.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "projects/DigitPop-CMS/src/styles.scss",
+              "projects/DigitPop-CMS/src/assets/css/style.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/DigitPop-CMS/tsconfig.app.json",
+              "projects/DigitPop-CMS/tsconfig.spec.json",
+              "projects/DigitPop-CMS/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/DigitPop-CMS/e2e/protractor.conf.js",
+            "devServerTarget": "DigitPop-CMS:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "DigitPop-CMS:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "DigitPop-Player": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/DigitPop-Player",
+      "sourceRoot": "projects/DigitPop-Player/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/DigitPop-Player",
+            "index": "projects/DigitPop-Player/src/index.html",
+            "main": "projects/DigitPop-Player/src/main.ts",
+            "polyfills": "projects/DigitPop-Player/src/polyfills.ts",
+            "tsConfig": "projects/DigitPop-Player/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/DigitPop-Player/src/favicon.ico",
+              "projects/DigitPop-Player/src/assets"
+            ],
+            "styles": [
+              "projects/DigitPop-Player/src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/DigitPop-Player/src/environments/environment.ts",
+                  "with": "projects/DigitPop-Player/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "20kb"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/DigitPop-Player/src/environments/environment.ts",
+                  "with": "projects/DigitPop-Player/src/environments/environment.staging.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "DigitPop-Player:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "DigitPop-Player:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "DigitPop-Player:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/DigitPop-Player/src/test.ts",
+            "polyfills": "projects/DigitPop-Player/src/polyfills.ts",
+            "tsConfig": "projects/DigitPop-Player/tsconfig.spec.json",
+            "karmaConfig": "projects/DigitPop-Player/karma.conf.js",
+            "assets": [
+              "projects/DigitPop-Player/src/favicon.ico",
+              "projects/DigitPop-Player/src/assets"
+            ],
+            "styles": [
+              "projects/DigitPop-Player/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/DigitPop-Player/tsconfig.app.json",
+              "projects/DigitPop-Player/tsconfig.spec.json",
+              "projects/DigitPop-Player/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/DigitPop-Player/e2e/protractor.conf.js",
+            "devServerTarget": "DigitPop-Player:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "DigitPop-Player:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "DigitPop-CMS"
+}

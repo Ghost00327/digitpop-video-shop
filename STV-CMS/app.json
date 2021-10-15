@@ -1,0 +1,40 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "description": "Review App for stv-cms",
+  "env": {
+    "AWS_ID": {
+      "required": true
+    },
+    "AWS_SECRET": {
+      "required": true
+    },
+    "AWS_TAG": {
+      "required": true
+    },
+    "CLOUDINARY_CLOUD_NAME": {
+      "required": true
+    },
+    "CLOUDINARY_UPLOAD_PRESET": {
+      "required": true
+    },
+    "MONGOLAB_URI": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "STV-CMS",
+  "scripts": {
+  },
+  "stack": "heroku-16"
+}

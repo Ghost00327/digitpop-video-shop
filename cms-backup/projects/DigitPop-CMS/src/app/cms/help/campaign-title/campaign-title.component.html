@@ -1,0 +1,28 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Title and First Steps</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            The campaign wizard will take you through each step of creating a shoppable video.
+            Each step will have a help section that will provide details.  The first step is
+            to provide a title for the shoppable video.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1604876032/Capture_Title_ax63ha.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+

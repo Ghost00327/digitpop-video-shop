@@ -1,0 +1,77 @@
+<div mat-dialog- class="container">
+  <form [formGroup]="loginForm" class="formLayout" (ngSubmit)="submit()">
+    <div class="logo">
+      <svg viewBox="0 0 180 60">
+        <use xlink:href="assets/img/app_assets.svg#logo"></use>
+      </svg>
+    </div>
+    <div
+      class="form-group email"
+      fxLayout="row"
+      fxLayoutGap="5px"
+      fxLayoutAlign="center center"
+    >
+      <mat-icon matPrefix aria-hidden="false" aria-label="Email"
+        >email</mat-icon
+      >
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="form-group password"
+      fxLayout="row"
+      fxLayoutGap="5px"
+      fxLayoutAlign="center center"
+    >
+      <mat-icon matPrefix aria-hidden="false" aria-label="Lock">lock</mat-icon>
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input
+          matInput
+          class="form-control"
+          formControlName="password"
+          id="password"
+          type="password"
+        />
+        <div
+          *ngIf="f.password.touched && f.password.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.password.errors.required">Password is required.</div>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <button
+      class="submitButton mat-raised-button"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
+      Submit
+    </button>
+
+    <!-- <div
+        *ngIf="f.confirm_password.touched && f.confirm_password.invalid"
+        class="alert alert-danger warnings"
+      >
+        <div *ngIf="f.confirm_password.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="f.confirm_password.errors.confirmedValidator">
+          Password and Confirm Password must be match.
+        </div>
+      </div> -->
+  </form>
+</div>

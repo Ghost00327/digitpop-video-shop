@@ -1,0 +1,70 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Product Groups</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Product Groups are groups of products that have an association with
+            the video timeline. For example, a fashion show that has ten models
+            walking in one at a time has ten product groups. Each model displays
+            a group of products during a time period. Model one may be displayed
+            from the beginning to ten seconds in. Model two then would appear
+            from ten seconds to twenty seconds, and so on for each successive
+            model.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600749984/Project_Wizard_Product_Groups_grcewe.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product Group in Video</ng-template>
+      <div>
+        <div>
+          <p>
+            The products in a product group are displayed when the viewer taps on the screen.  In this example, a product group is displayed for blush and bronzer in a cosmetics tutorial.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600745522/Capture_Player_Products_k2ab1d.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product Groups View</ng-template>
+      <div>
+        <div>
+          <p>
+            Each Product Group can be navigated to through the Product Groups view.  In this example the Product Group is listed as "Too Faced Duo".
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600751797/Capture_Player_Product_Groups_nadnkv.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

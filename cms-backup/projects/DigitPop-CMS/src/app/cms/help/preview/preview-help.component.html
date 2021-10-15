@@ -1,0 +1,25 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Preview</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            The preview shows the shoppable video in progress and allows you to
+            make sure everything is in place before publishing.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600812315/Capture_Preiew_zcjdii.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

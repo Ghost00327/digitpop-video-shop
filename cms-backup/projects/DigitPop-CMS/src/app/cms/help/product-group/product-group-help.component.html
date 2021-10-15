@@ -1,0 +1,50 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Product Group Information</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Each Product Group has a few fields that need to be completed. The
+            first is the name that will be displayed for the product group. The
+            second is an image for the product group thumbnail. The third is a
+            time in seconds on the timeline of the video where the product group
+            is to start. For example, the first product group should be default
+            start at time 0. No two product groups should have the same time.
+            The video preview can be used to find the best timing.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1601899503/Capture_Product_Group_dlm5qa.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product Group Products</ng-template>
+      <div>
+        <div>
+          <p>
+            Click the Add Product button for every product in the Product Group.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1601902578/Capture_Product_Group_Products_xp6frd.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

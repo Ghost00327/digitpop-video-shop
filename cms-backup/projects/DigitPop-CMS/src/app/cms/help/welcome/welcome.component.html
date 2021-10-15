@@ -1,0 +1,141 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <div>
+        <ng-template matStepLabel>Welcome</ng-template>
+        <div>
+          <div>
+            <p>
+              Welcome to DigitPop! This is a quick introduction that will get
+              you creating your first shoppable video in minutes. Click on the
+              next step and we'll introduce you to your project dashboard.
+            </p>
+          </div>
+          <div>
+            <img
+              class="welcomeImage"
+              src="https://res.cloudinary.com/boggssystems/image/upload/v1614298624/uxipcdpckkuzbwmpxiv6.png"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Projects</ng-template>
+      <div>
+        <div>
+          <p>
+            A project is used to generate a shoppable video and the projects
+            page lists all of your projects with analytics. All fields are
+            sortable and can be searched by entering text in the filter. Click
+            on the + button to start a new project in the project wizard. Click
+            on the edit icon in any of the project rows to edit the project in
+            the wizard.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600568069/Projects_xk87qs.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Analytics</ng-template>
+      <div>
+        <div>
+          <p>
+            Each project displays analytics of marketing insights. Click on a
+            project to expand the analytics to a product group level. Each
+            product group is also expandable to show product level analytics.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600571747/Capture_Analytics_PGs_f2vahn.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Analytics - Products</ng-template>
+      <div>
+        <div>
+          <p>
+            The product analytics show how many times a product has been
+            selected and also how many times the 'Buy Now' button has been
+            pressed to navigate to the shopping cart.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600573545/Capture_Analytics_Products_zwfra8.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Wizard</ng-template>
+      <div>
+        <div>
+          <p>
+            The project wizard makes it easy to put together your shoppable
+            video, step-by-step with help.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600577359/Project_Wizard_tpmlf7.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Wizard - Video</ng-template>
+      <div>
+        <div>
+          <p>
+            After just a few minutes you have a shoppable video that is
+            equivalent to a small web store in itself. The video link can be
+            shared through social media, email, text or embedded into your
+            website.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600753079/Capture_Player_Serum_PG_k52op5.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

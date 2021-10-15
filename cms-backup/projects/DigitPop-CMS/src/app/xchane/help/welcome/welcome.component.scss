@@ -1,0 +1,41 @@
+.container {
+  width: 90%;
+  height: 90%;
+  display: grid;
+}
+
+.stepper {
+  grid-row: 1/10;
+  grid-column: 1/13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.projects {
+//  grid-row: 2/10;
+//  grid-column: 1/13;
+ display: grid;
+ grid-template-columns: repeat(12, 1fr);
+ grid-template-rows: repeat(10, 1fr);
+}
+
+.projectsCaption {
+
+}
+
+.welcomeImage {
+  margin-top: 10px;
+  grid-row:  4/8;
+  grid-column: 4/8;
+  width: 40%;
+  height: 40%;
+}
+
+.projectsImage {
+  margin-top: 10px;
+  grid-row:  4/10;
+  grid-column: 2/12;
+  width: 80%;
+  height: 80%;
+}

@@ -1,0 +1,48 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Products</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Each product has fields that need to be completed including the
+            name, subtitle, description, price and the link address where the
+            product shopping cart can be found. Each product also requires at
+            least one image.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600753970/Capture_Product_Project_Wizard_hesfhs.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product View</ng-template>
+      <div>
+        <div>
+          <p>
+            The product view in each video displays the product information,
+            images and a button that links to the product shopping cart.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600745432/Capture_Player_Product_dsnw5j.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

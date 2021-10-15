@@ -1,0 +1,529 @@
+<div class="container">
+  <mat-vertical-stepper [linear]="isLinear" #stepper class="stepper">
+    <mat-step [stepControl]="projectFormGroup" #stepTitle>
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Title</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Video Help"
+          (click)="onTitleHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <div fxLayout="column">
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              placeholder="Title of Shoppable Video"
+              formControlName="title"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- <mat-step [stepControl]="projectFormGroup">
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Category</ng-template>
+        <div class="category">
+          <mat-form-field class="category">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let cat of categories" [value]="cat._id">
+                {{ cat.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step> -->
+    <!-- <mat-step [stepControl]="projectFormGroup">
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Description of Shoppable Video</ng-template>
+        <mat-form-field class="description">
+          <mat-label>Description</mat-label>
+          <input
+            class="description"
+            matInput
+            formControlName="description"
+            placeholder="Ex. Fashion show from NYC in 2020"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step> -->
+    <!-- (ngSubmit)="onSubmit()" -->
+    <mat-step [stepControl]="projectFormGroup">
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Upload a video</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Video Help"
+          (click)="onVideoHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <mat-form-field>
+          <ngx-mat-file-input
+            formControlName="video"
+            placeholder="Basic Input"
+            (ngModelChange)="onSubmit()"
+            accept="video/*"
+          ></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        <div>
+          <mat-progress-bar
+            class="progressBar"
+            mode="determinate"
+            [value]="uploadStatus"
+          ></mat-progress-bar>
+        </div>
+        <div *ngIf="project.media != null && project.media?.url != null">
+          <video
+            class="videoPreview"
+            preload="auto"
+            controls
+            [src]="project.media?.url"
+            type="video/mp4"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext *ngIf="uploadComplete">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="projectFormGroup">
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Select a Thumbnail</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Select Thumbnail Help"
+          (click)="onThumbnailHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <mat-form-field>
+          <ngx-mat-file-input
+            formControlName="thumbnail"
+            placeholder="Basic Input"
+            (ngModelChange)="onSubmitThumbnail()"
+          ></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        <div
+          *ngIf="project.thumbnail != null && project.thumbnail?.url != null"
+        >
+          <div class="thumbnail">
+            <img [src]="project.thumbnail?.url" />
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext *ngIf="imageUploadComplete">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="projectFormGroup">
+      <form [formGroup]="projectFormGroup">
+        <ng-template matStepLabel>Product Groups</ng-template>
+        <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Open Product Group Help"
+          (click)="onProductGroupsHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+        <button type="button" mat-raised-button (click)="addProductGroup()">
+          Add Product Group
+        </button>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button
+            mat-button
+            matStepperNext
+            *ngIf="this.project.productGroupTimeLine.length > 0"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step
+      [stepControl]="projectFormGroup"
+      *ngFor="let productGroup of getProductGroupControls(); let i = index"
+    >
+      <div [formGroup]="projectFormGroup">
+        <div formArrayName="productGroups">
+          <div [formGroupName]="i">
+            <ng-template matStepLabel>Product Group {{ i + 1 }} </ng-template>
+            <button
+              type="button"
+              mat-icon-button
+              color="primary"
+              aria-label="Open Product Group Help"
+              (click)="onProductGroupHelp()"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+            <button
+              type="button"
+              mat-icon-button
+              color="primary"
+              aria-label="Example icon button with a delete icon"
+              (click)="onDeleteProductGroup(i, productGroup)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+            <div>
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  formControlName="title"
+                  placeholder="Enter product group name here"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <!-- <div>
+              <mat-form-field>
+                <mat-label>Subtitle</mat-label>
+                <input
+                  matInput
+                  formControlName="subtitle"
+                  placeholder="Enter product group subtitle here"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="description">
+                <mat-label>Description</mat-label>
+                <input
+                  matInput
+                  formControlName="description"
+                  placeholder="Enter product group description here"
+                  required
+                />
+              </mat-form-field>
+            </div> -->
+            <div>
+              <mat-form-field>
+                <ngx-mat-file-input
+                  formControlName="thumbnail"
+                  placeholder="Basic Input"
+                  (ngModelChange)="onSubmitThumbnail()"
+                ></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+              <div
+                *ngIf="
+                  project.productGroupTimeLine[i] != null &&
+                  project.productGroupTimeLine[i].thumbnail != null
+                "
+              >
+                <div class="thumbnail">
+                  <img
+                    [src]="project.productGroupTimeLine[i]?.thumbnail?.url"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label>Time</mat-label>
+                <input
+                  matInput
+                  formControlName="time"
+                  placeholder="Enter product group time here"
+                  required
+                />
+              </mat-form-field>
+            </div>
+
+            <video
+              class="videoPreview"
+              preload="auto"
+              controls
+              [src]="project.media?.url"
+              type="video/mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+            <div>
+              <button type="button" mat-raised-button (click)="addProduct(i)">
+                Add Product
+              </button>
+            </div>
+
+            <div>
+              <button type="button" mat-button matStepperPrevious>Back</button>
+              <button type="button" mat-button matStepperNext>Next</button>
+            </div>
+
+            <div>
+              <mat-step
+                [stepControl]="getProductsFormGroup(i)"
+                *ngFor="
+                  let product of getProductsFromProductFormGroup(i);
+                  let j = index
+                "
+              >
+                <div formArrayName="products">
+                  <div [formGroupName]="j">
+                    <div>
+                      <ng-template matStepLabel
+                        >Product {{ j + 1 }} of Product Group
+                        {{ i + 1 }}</ng-template
+                      >
+                      <button
+                        type="button"
+                        mat-icon-button
+                        color="primary"
+                        aria-label="Open Product Help"
+                        (click)="onProductHelp()"
+                      >
+                        <mat-icon>help</mat-icon>
+                      </button>
+                      <button
+                        type="button"
+                        mat-icon-button
+                        color="primary"
+                        aria-label="Example icon button with a delete icon"
+                        (click)="onDeleteProduct(i, j)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <div>
+                        <mat-form-field>
+                          <mat-label>Name</mat-label>
+                          <input
+                            matInput
+                            formControlName="name"
+                            placeholder="Enter product name here"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field>
+                          <mat-label>Subtitle</mat-label>
+                          <input
+                            matInput
+                            formControlName="subtitle"
+                            placeholder="Enter product subtitle here"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field class="description">
+                          <mat-label>Description</mat-label>
+                          <input
+                            matInput
+                            formControlName="description"
+                            placeholder="Enter product description here"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field>
+                          <mat-label>Price</mat-label>
+                          <input
+                            matInput
+                            formControlName="price"
+                            placeholder="Enter product price here"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field>
+                          <mat-label>Link URL</mat-label>
+                          <input
+                            matInput
+                            formControlName="makeThisYourLookURL"
+                            placeholder="Enter product link URL here"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div style="margin: 10px; padding: 0">
+                        <button
+                          type="button"
+                          mat-raised-button
+                          (click)="addProductImage(i, j)"
+                        >
+                          Add Product Image
+                        </button>
+                      </div>
+                      <div
+                        *ngFor="
+                          let productImg of getProductImageArrayControls(i, j);
+                          let k = index
+                        "
+                      >
+                        <div formArrayName="images">
+                          <div [formGroupName]="k">
+                            <div style="margin: 10px; padding: 0">
+                              <mat-form-field>
+                                <ngx-mat-file-input
+                                  formControlName="imageFile"
+                                  placeholder="Basic Input"
+                                  (ngModelChange)="
+                                    onSubmitProductImage(i, j, k)
+                                  "
+                                ></ngx-mat-file-input>
+                                <mat-icon matSuffix>folder</mat-icon>
+                              </mat-form-field>
+                            </div>
+                            <div style="margin-left: 10px">
+                              <div class="thumbnail">
+                                <img
+                                  [src]="
+                                    this.project.productGroupTimeLine[i]
+                                      .products[j].images[k]?.url
+                                  "
+                                />
+                              </div>
+                              <button
+                                *ngIf="
+                                  this.project.productGroupTimeLine[i].products[
+                                    j
+                                  ].images[k] != (null || undefined)
+                                "
+                                mat-icon-button
+                                type="button"
+                                color="primary"
+                                aria-label="Example icon button with a delete icon"
+                                (click)="onDeleteProductImage(i, j, k)"
+                              >
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div *ngFor="let productImg of getProductImageControls(i,j)">
+                      <div class="thumbnail">
+                        <img [src]="productImg.url" />
+                      </div>
+                    </div>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button
+                        mat-button
+                        matStepperNext
+                        *ngIf="imageUploadComplete"
+                      >
+                        Next
+                      </button>
+                    </div> -->
+                    </div>
+                    <div>
+                      <button type="button" mat-button matStepperPrevious>
+                        Back
+                      </button>
+                      <button
+                        type="button"
+                        mat-button
+                        matStepperNext
+                        (click)="onTempBreak()"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Preview</ng-template>
+      <p>You are now done.</p>
+
+      <button
+      type="button"
+      mat-icon-button
+      color="primary"
+      aria-label="Open Product Group Help"
+      (click)="onPreviewHelp()"
+    >
+      <mat-icon>help</mat-icon>
+    </button>
+      <button type="button" mat-raised-button (click)="preview()">View</button>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+
+      <button
+          type="button"
+          mat-icon-button
+          color="primary"
+          aria-label="Select Thumbnail Help"
+          (click)="onProductGroupHelp()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+
+      <p>Video URL is : https://digitpop-player.herokuapp.com/ad/{{ project._id }}</p>
+
+      <input type="hidden" />
+      <mat-icon
+        class="your-icon-class"
+        [matTooltip]="copyClipboardText"
+        matTooltipPosition="above"
+        (click)="onCopyToClipboard()"
+        on-focusout="onResetCopyToClipboardText()"
+        >content_copy</mat-icon
+      >
+
+      <!-- <button type="button" mat-raised-button (click)="onSubmitProject()")>
+      Submit Project
+    </button> -->
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+    <mat-vertical-stepper> </mat-vertical-stepper
+  ></mat-vertical-stepper>
+</div>

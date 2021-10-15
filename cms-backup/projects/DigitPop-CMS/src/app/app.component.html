@@ -1,0 +1,59 @@
+<mat-spinner
+  class="spinner"
+  [diameter]="50"
+  *ngIf="spinnerService.visibility | async"
+></mat-spinner>
+<mat-toolbar color="secondary">
+  <mat-toolbar-row>
+    <!--  <span>HOME</span> -->
+    <!-- <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button> -->
+    <div id="main_logo">
+      <svg viewBox="0 0 180 60">
+        <use xlink:href="assets/img/app_assets.svg#logo"></use>
+      </svg>
+    </div>
+    <span class="spacer"></span>
+    <!-- <div *ngIf="currentUser">
+      <a mat-button (click)="openLoginDialog()">Login Toolkit</a>
+      <a mat-button routerLink="/cms/dashboard">Dashboard</a>
+      <a mat-button routerLink="/dashboard" (click)="account()"
+        ><mat-icon>account_circle</mat-icon>
+      </a>
+    </div> -->
+    <div>
+      <a mat-button *ngIf="!isNotLandingpage" (click)="openLoginDialog()"
+        >Login</a
+      >
+      <!-- <a mat-button routerLink="/register">Register</a> -->
+      <!-- <a mat-button (click)="openDialog()">Login</a> -->
+      <a mat-button *ngIf="isNotLandingpage" (click)="openLogout()">Logout</a>
+      <a mat-button *ngIf="!isNotLandingpage" (click)="openSignup()">SignUp</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <!-- <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/dashboard'"> Dashboard </a>
+      <a mat-list-item [routerLink]="'/account'"> Campaigns </a>
+      <a mat-list-item [routerLink]="'/projects'"> Videos </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item
+        >Close</a
+      >
+    </mat-nav-list>
+  </mat-sidenav> -->
+  <mat-sidenav-content>
+    <div style="height: 88vh">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-toolbar color="secondary">
+  <mat-toolbar-row>
+    <div>
+      <!-- <span><h6>Copyright 2020 Boggs Systems Corporation</h6></span> -->
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

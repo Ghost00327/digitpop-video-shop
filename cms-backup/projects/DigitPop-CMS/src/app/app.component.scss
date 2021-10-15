@@ -1,0 +1,44 @@
+.spacer {
+  flex: 2 2 auto;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: static;
+  top: 0;
+  z-index: 1;
+}
+
+.toolbarcolor {
+  color: #202020;
+}
+
+#main_logo { width: 115px; }
+#main_logo svg { width: 90px; height: 30px; margin-top: 10px; margin-left: 10px; }
+
+// .main_logo {
+//   z-index: 9999;
+// }
+
+.spinner  {
+  z-index: 9999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}

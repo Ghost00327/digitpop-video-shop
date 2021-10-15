@@ -1,0 +1,134 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.answers {
+  grid-row: 3/10;
+  grid-column: 2/12;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 666px) {
+  .question {
+    grid-row: 2/3;
+    grid-column: 2/12;
+    width: 100%;
+    height: 100%;
+    font-family: Ubuntu;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .answerButtton {
+    background-color: rgb(13, 13, 13);
+    opacity: 1;
+  }
+
+  .answerText{
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 400;
+    color: #5abeff;
+  }
+}
+
+@media only screen and (min-width: 667px) and (max-width: 1024px) {
+  .question {
+    grid-row: 2/3;
+    grid-column: 2/12;
+    width: 100%;
+    height: 100%;
+    font-family: Ubuntu;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .answerButtton {
+    background-color: rgb(13, 13, 13);
+    opacity: 1;
+  }
+
+  .answerText{
+    font-family: Ubuntu;
+    font-size: 24px;
+    font-weight: 400;
+    color: #5abeff;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
+  .question {
+    grid-row: 2/3;
+    grid-column: 2/12;
+    width: 100%;
+    height: 100%;
+    font-family: Ubuntu;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .answerButtton {
+    background-color: rgb(13, 13, 13);
+    opacity: 1;
+  }
+
+  .answerText{
+    font-family: Ubuntu;
+    font-size: 32px;
+    font-weight: 400;
+    color: #5abeff;
+  }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1679px) {
+  .question {
+    grid-row: 2/3;
+    grid-column: 2/12;
+    width: 100%;
+    height: 100%;
+    font-family: Ubuntu;
+    font-size: 42px;
+    font-weight: 700;
+  }
+
+  .answerButtton {
+    background-color: rgb(13, 13, 13);
+    opacity: 1;
+  }
+
+  .answerText{
+    font-family: Ubuntu;
+    font-size: 36px;
+    font-weight: 400;
+    color: #5abeff;
+  }
+}
+
+@media only screen and (min-width: 1680px) {
+  .question {
+    grid-row: 2/3;
+    grid-column: 2/12;
+    width: 100%;
+    height: 100%;
+    font-family: Ubuntu;
+    font-size: 46px;
+    font-weight: 700;
+  }
+
+  .answerButtton {
+    background-color: rgb(13, 13, 13);
+    opacity: 1;
+  }
+
+  .answerText{
+    font-family: Ubuntu;
+    font-size: 42px;
+    font-weight: 400;
+    color: #5abeff;
+  }
+}

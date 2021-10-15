@@ -1,0 +1,31 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Upload Video</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Upload a video that showcases your products.  Shoppable Video is capable of
+            showcasing multiple products at a time. Take the classic fashion
+            show format for example. Each model has a look that is composed of
+            multiple products working in concert. It is suggested that all the
+            products are displayed for enough time for the viewer to properly
+            evaluate the product.  A steady rhythm, for example of five to ten seconds
+            per product group is suggested.  Any editing of the video should be done before
+            this step.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600577729/Project_Wizard_Video_a54jcq.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

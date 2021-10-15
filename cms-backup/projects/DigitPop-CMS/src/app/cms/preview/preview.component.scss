@@ -1,0 +1,39 @@
+::ng-deep .cdk-overlay-container {
+  /* Do you changes here */
+  z-index: 9999;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.iframe {
+  grid-column: 1/12;
+  grid-row: 1/11;
+  width: 100%;
+  height: 100%;
+}
+
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}

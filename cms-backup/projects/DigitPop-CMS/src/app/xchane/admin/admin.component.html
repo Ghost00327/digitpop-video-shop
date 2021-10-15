@@ -1,0 +1,92 @@
+<div id="main_wrap">
+    <div id="main_cont">
+        <!-- Header -->
+        <div id="main_head">
+            <div id="main_logo">
+                <svg viewBox="0 0 180 60">
+                    <use xlink:href="assets/img/app_assets.svg#logo"></use>
+                </svg>
+            </div>
+            <div id="main_menu">
+                <ul>
+                    <li>
+                        <a href="#" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+                    </li>
+                    <!--
+						<li><a href="#" [hidden]="authService.currentUser == null">Logout</a></li>
+						-->
+                </ul>
+                <svg id="menu_toggle" viewBox="0 0 60 60">
+                    <use xlink:href="assets/img/app_assets.svg#icon_menu"></use>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div id="main_body">
+            <!-- Intro -->
+            <div id="body_section_intro" class="body_section">
+                <div class="body_content">
+                    <div id="completed_today">
+                        <h1>Total Active Users
+                            <span style="color:white">{{authService.currentUser.credits}}</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="body_content">
+                    <div id="completed_today">
+                        <h1>Number of Videos Completed Today
+                            <span style="color:white">{{authService.currentUser.credits}}</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="body_content">
+                    <div id="signups_today">
+                        <h1>Sign Ups Today
+                            <span style="color:white">{{authService.currentUser.credits}}</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <th>Email</th>
+                    <th>Approval</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.email}}</td>
+                        <td>{{user.approved}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--<select (change)="filterForeCasts($event.target.value)">-->
+        <div>
+            <select (change)="onChange($event)">
+                <option *ngFor="let v of users" [value]="v.id">{{v.email}}</option>
+            </select>
+            <!-- 
+            <select (change)="setSelectedUser($event.target.value)">
+                <option value="0">--All--</option>
+                <option *ngFor="let user of users" value={{user}}>
+                    {{user.email}}
+                </option>
+            </select> -->
+        </div>
+
+        <div>
+            <button (click)="onApproveUser()">Approve User</button>
+        </div>
+
+        <!-- Footer -->
+        <div id="main_foot">
+            Copyright &copy; 2019 Boggs Systems Corporation. All rights reserved.
+        </div>
+    </div>
+
+</div>

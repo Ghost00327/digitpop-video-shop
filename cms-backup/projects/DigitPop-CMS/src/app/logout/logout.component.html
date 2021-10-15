@@ -1,0 +1,17 @@
+<div mat-dialog- class="container">
+    <form [formGroup]="loginForm">
+        <h2>Are you sure to logout?</h2>
+        <div mat-dialog-actions class="action">
+        <button mat-button class="btn btn-primary" (click)="logout()">
+          <span
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Yes
+        </button>
+        <button mat-button [mat-dialog-close] cdkFocusInitial (click)="close()">
+          No
+        </button>
+      </div>
+    </form>
+</div>
+  

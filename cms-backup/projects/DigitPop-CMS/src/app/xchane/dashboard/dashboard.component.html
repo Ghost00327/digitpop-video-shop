@@ -1,0 +1,361 @@
+<div id="main_wrap">
+  <div id="main_cont">
+    <!-- Body -->
+    <div id="main_body">
+      <!-- Intro -->
+      <div id="body_section_intro" class="body_section">
+        <div class="body_content">
+          <div>
+            <h1>Dashboard</h1>
+            <p class="muted">
+              Welcome to DigitPop! The Dashboard is where you launch the
+              shoppable video ads to earn points for gift cards for your
+              favorite Video, Music and News. The media provider that you're
+              earning points towards is selected in the settings page. Tap on
+              'Next Video' button below to get started.
+            </p>
+          </div>
+          <div id="dashboard_points">
+            <h1>
+              Points
+              <!-- <span style="color: white">{{
+                authService.currentUserValue.credits
+              }}</span> -->
+            </h1>
+            <p class="muted">
+              The Points are what you earn for completing shoppable video ads.
+              The numbers above show the points earned on the left, while on the
+              right it shows the number of points needed for your electronic
+              gift card.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Videos -->
+      <div id="body_section_tiles_vid">
+        <h1>Videos</h1>
+        <div
+          fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutAlign="space-around center"
+          fxLayoutGap="25px"
+        >
+          <mat-card
+            class="card-styling"
+            *ngFor="let category of categories"
+            fxFlex="calc(33%-25px)"
+            fxFlex.sm="calc(50%-25px)"
+            (click)="onLaunchVideo(category)"
+          >
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{ category.name }}</mat-card-title>
+              <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
+            </mat-card-header>
+            <!-- <img
+              mat-card-image
+              src="https://res.cloudinary.com/boggssystems/image/upload/v1544297674/AsSeenOnTv_jtjp1e.png"
+            /> -->
+            <mat-card-content>
+              <p>
+                {{ category.name }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+        <!-- <div class="tile_main">
+          <div>
+            <ul style="list-style-type: none">
+              <li *ngFor="let category of categories">
+                <div class="tile_main">
+                  <div class="tile_item" (click)="onLaunchVideo()">
+                    <div class="tile_head">
+                      <div class="tile_avtr">
+                        <img
+                          src="https://res.cloudinary.com/boggssystems/image/upload/v1544297674/AsSeenOnTv_jtjp1e.png"
+                          alt=""
+                        />
+                      </div>
+                      <div class="tile_text">
+                        <div class="tile_name">As Seen On TV</div>
+                        <div class="tile_desc">
+                          Useful and innovative products
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tile_body">
+                      <img
+                        class="tile_imge"
+                        src="https://res.cloudinary.com/boggssystems/image/upload/v1544297674/AsSeenOnTv_jtjp1e.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="tile_foot">
+                      <p>
+                        Tap this tile to see the latest in innovative products.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+        <!--
+					<mat-card class="example-card">
+						<mat-card-actions>
+							<button class="btn btn-primary btn-lg btn-block" (click)="onLaunchVideo()">Next Video</button>
+						</mat-card-actions>
+						<mat-card-header>
+							<div mat-card-avatar class="example-header-image"></div>
+							<mat-card-title>As Seen On TV</mat-card-title>
+							<mat-card-subtitle>Useful and innovative products</mat-card-subtitle>
+						</mat-card-header>
+						<img mat-card-image src="https://res.cloudinary.com/boggssystems/image/upload/v1544297674/AsSeenOnTv_jtjp1e.png" alt="Photo of a Shiba Inu">
+						<mat-card-content>
+							<p>Tap the screen to see the latest in innovative products</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button class="btn btn-primary btn-lg btn-block" (click)="onLaunchVideo()">Next Video</button>
+						</mat-card-actions>
+					</mat-card>
+
+
+
+					<mat-card class="example-card">
+						<mat-card-header>
+							<div mat-card-avatar class="example-header-image"></div>
+							<mat-card-title>Lunch Ideas</mat-card-title>
+							<mat-card-subtitle>Make lunch easy and fresh with shoppable lunch ideas</mat-card-subtitle>
+						</mat-card-header>
+						<img mat-card-image src="https://res.cloudinary.com/boggssystems/image/upload/v1523119629/lunch_ideas_elazsw.jpg" alt="Photo of a Shiba Inu">
+						<mat-card-content>
+							<p>Lunch is easy and fun when planned through our shoppable video.</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button class="btn btn-primary" (click)="onLaunchVideo()">Next Video</button>
+						</mat-card-actions>
+					</mat-card>
+
+					<mat-card class="example-card">
+						<mat-card-header>
+							<div mat-card-avatar class="example-header-image"></div>
+							<mat-card-title>Dinner Ideas</mat-card-title>
+							<mat-card-subtitle>Expand your morning repetoire with shoppable breakfast ideas</mat-card-subtitle>
+						</mat-card-header>
+						<img mat-card-image src="https://res.cloudinary.com/boggssystems/image/upload/v1523119884/dinner_ideas_opz42a.jpg" alt="Photo of a Shiba Inu">
+						<mat-card-content>
+							<p>Tap the screen to make an order and plan your breakfast seamlessly and efficiently</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button class="btn btn-primary" (click)="onLaunchVideo()">Next Video</button>
+						</mat-card-actions>
+					</mat-card>
+
+					<mat-card class="example-card">
+						<mat-card-header>
+							<div mat-card-avatar class="example-header-image"></div>
+							<mat-card-title>Travel Ideas</mat-card-title>
+							<mat-card-subtitle>Ideas for your next getaway</mat-card-subtitle>
+						</mat-card-header>
+						<img mat-card-image src="https://res.cloudinary.com/boggssystems/image/upload/v1523123109/travel_ideas_zqdnow.png" alt="Photo of a Shiba Inu">
+						<mat-card-content>
+							<p>You're one tap away from your next adventure</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button class="btn btn-primary" (click)="onLaunchVideo()">Next Video</button>
+						</mat-card-actions>
+					</mat-card>
+					-->
+      </div>
+
+      <!--
+				<div class="row col-*-12 embed-responsive embed-responsive-16by9">
+					<iframe width="100%" class="embed-responsive-item" [src]="iFrameSrc | safe"></iframe>
+				</div>
+
+				<div class="row">
+					<div class="col-*-12">
+						<iframe width="100%" src="https://stvplayer.herokuapp.com/#/ad/5aaad85b76f2c80400431c3c">
+							<p>Your browser does not support iframes.</p>
+						</iframe>
+					</div>
+				</div>
+				-->
+
+      <div id="body_section_tiles_rwd">
+        <h1>Reward Gallery</h1>
+        <div class="tile_main">
+          <div class="tile_item" (click)="onClickMe('sling')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_sling"></use>
+            </svg>
+            <div class="tile_value">2000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('netflix')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_netflix"
+              ></use>
+            </svg>
+            <div class="tile_value">1100 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('hulu')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_hulu"></use>
+            </svg>
+            <div class="tile_value">600 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('amazon')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_amazon"></use>
+            </svg>
+            <div class="tile_value">1300 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('spotify')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_spotify"
+              ></use>
+            </svg>
+            <div class="tile_value"><span></span>1000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('applemusic')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_apple"></use>
+            </svg>
+            <div class="tile_value">1000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('pandora')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_pandora"
+              ></use>
+            </svg>
+            <div class="tile_value">1000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('tidal')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_tidal"></use>
+            </svg>
+            <div class="tile_value">1000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('wallstreetjournal')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_wsj"></use>
+            </svg>
+            <div class="tile_value">3700 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('newyorktimes')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_nytimes"
+              ></use>
+            </svg>
+            <div class="tile_value">1200 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('usatoday')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_usatoday"
+              ></use>
+            </svg>
+            <div class="tile_value">1000 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('latimes')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_latimes"
+              ></use>
+            </svg>
+            <div class="tile_value">800 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('nbatv')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_nba"></use>
+            </svg>
+            <div class="tile_value">1800 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('mlbtv')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use xlink:href="assets/img/app_assets.svg#provider_mlb"></use>
+            </svg>
+            <div class="tile_value">2500 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('gamefly')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_gamefly"
+              ></use>
+            </svg>
+            <div class="tile_value">1600 points</div>
+          </div>
+
+          <div class="tile_item" (click)="onClickMe('youtubetv')">
+            <svg class="tile_imge" viewBox="0 0 400 225">
+              <use
+                xlink:href="assets/img/app_assets.svg#provider_youtubetv"
+              ></use>
+            </svg>
+            <div class="tile_value">4000 points</div>
+          </div>
+
+          <!--
+                    <label class="tile_item" [class.active]="authService.currentUser.mediaSling">
+						<svg class="tile_imge" viewBox="0 0 400 225"><use xlink:href="assets/img/app_assets.svg#provider_sling"></use></svg>
+						<div class="tile_body">
+							<div class="tile_title">Sling TV</div>
+						</div>
+						<div class="tile_value"><span>SUBSCRIBED -</span> {{authService.currentUser.mediaSlingCreditValue}} credits</div>
+						<input type="checkbox" [checked]="authService.currentUser.mediaSling" (change)="onChangeMedia('mediaSling')">
+					</label>
+
+					<label class="tile_item">
+						<svg class="tile_imge" viewBox="0 0 400 225">
+							<use xlink:href="assets/img/app_assets.svg#provider_sling"></use>
+						</svg>
+						<div class="tile_body">
+							<div class="tile_title">Sling TV</div>
+						</div>
+						<div class="tile_value">
+							<span>SUBSCRIBED -</span> {{authService.currentUser.mediaSlingCreditValue}} credits</div>
+						<input type="checkbox" [checked]="authService.currentUser.mediaSling" (change)="onChangeMedia('mediaSling')">
+					</label>
+                    -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="main_foot">
+      Copyright &copy; 2019 Boggs Systems Corporation. All rights reserved.
+    </div>
+  </div>
+
+  <div
+    id="main_anim"
+    [class]="scoreBubbleIsOpen ? 'open' : 'closed'"
+    (click)="scoreBubbleToggle()"
+  >
+    <div id="main_anim_bubble">
+      <div id="main_anim_score">+100</div>
+    </div>
+  </div>
+</div>

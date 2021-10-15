@@ -1,0 +1,70 @@
+.container {
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.stepper {
+  grid-row: 1/11;
+  grid-column: 1/11;
+}
+
+.videoPreview {
+  position: relative;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: relative;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+
+.hiddenElement {
+  display: none;
+}
+
+.description {
+  width: 100%;
+  grid-column: 1/10;
+}
+
+.category {
+  grid-column: 1/5;
+}
+
+.your-icon-class {
+  transition: all 300ms; // if you want the color to gradually change
+}
+
+.your-icon-class:hover {
+  color: black !important;
+  background-color: white !important;
+}
+
+.your-icon-class:hover .your-icon-class:before {
+  content: "Joe's Task:";
+}

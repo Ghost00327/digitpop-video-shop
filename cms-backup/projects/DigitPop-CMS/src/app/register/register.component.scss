@@ -1,0 +1,114 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.bgimg {
+  background-image: url("../../assets/img/dgpop_back.png");
+  background-size: 50%;
+  background-position: right 200px bottom 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .internalContainer {
+    background-image: url("../../assets/img/dp_panel_background.png");
+    grid-row: 2/8;
+    grid-column: 2/9;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .header {
+    grid-row: 2/3;
+    grid-column: 2/9;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: x-large;
+  }
+
+  .form {
+    background-image: url("../../assets/img/dp_panel_background.png");
+    grid-row: 2/8;
+    grid-column: 3/11;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .form {
+    background-image: url("../../assets/img/dp_panel_background.png");
+    grid-row: 2/8;
+    grid-column: 3/11;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .internalContainer {
+    background-image: url("../../assets/img/dp_panel_background.png");
+    grid-row: 2/8;
+    grid-column: 4/10;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .header {
+    grid-row: 2/3;
+    grid-column: 2/9;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: medium;
+  }
+}
+
+.password {
+  grid-row: 3/4;
+  grid-column: 3/8;
+  height: auto;
+  width: 100%;
+  vertical-align: top;
+}
+
+.passwordConfirmation {
+  margin-top: 5px;
+  grid-row: 4/5;
+  grid-column: 3/8;
+  height: auto;
+  width: 100%;
+  vertical-align: top;
+}
+
+.submitButton {
+  margin-top: 10px;
+  grid-row: 6/7;
+  grid-column: 5/7;
+  height: 36px;
+  width: 100%;
+}
+
+.warnings {
+  grid-row: 5/6;
+  grid-column: 4/8;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.labelStyle {
+  margin-right: 10px;
+}

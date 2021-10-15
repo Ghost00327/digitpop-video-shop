@@ -1,0 +1,100 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <ng-template matStepLabel>Navigation</ng-template>
+      <div class="container">
+        <div class="blurb">
+          <p>
+            Every shoppable video provides the ability to navigate through the
+            product groups and products in the video. You can view information
+            about product groups and products and navigate to points in the
+            video based on the product group. The "Resume" button will resume
+            the video from where it left off. The "Seek and Play" button will
+            seek and play to the point in the video where the product group
+            starts. The "Previous" and "Next" button will navigate between the
+            product groups. The "All Groups" button will navigate to the page
+            that displays all of the product groups. Clicking on a product in a
+            product group will navigate to the page for the product. The next
+            slide shows the product detail page.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1602890765/Capture_Player_Navigation_kusqxx.png"
+            layout-fill
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product Details</ng-template>
+      <div>
+        <div>
+          <p>
+            The Product Details page shows information including product details
+            and images. Clicking on the "Buy Now" button navigates to the
+            shopping cart for the product. The "Back to Group" button navigates
+            back to the product group page that the product belongs to. Clicking
+            on the product image brings up a zoomed view.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1602895519/Capture_Player_Product_acizfn.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Product Image Zoom View</ng-template>
+      <div>
+        <div>
+          <p>
+            The product image can be zoomed in and out.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600745485/Capture_Player_Product_Zoom_qzqjsu.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>All Product Groups View</ng-template>
+      <div>
+        <div>
+          <p>
+            The product group view shows all of the product groups in the video.  Click on a product group to navigate to a product group view.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            class="image"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600745460/Capture_Player_Product_Groups_ssemna.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

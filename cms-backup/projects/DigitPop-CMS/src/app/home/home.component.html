@@ -1,0 +1,97 @@
+<div class="bgimg container">
+  <div class="videocontainer">
+    <div class="videocontainer1">
+      <span class="videocontainer2">For Consumers</span>
+      <iframe
+        class="videocontainer1"
+        src="https://www.youtube.com/watch?v=DWnw_pA6BeE&t=1s"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="videocontainer2">
+      <span class="videocontainer2">For Advertisers</span>
+      <iframe
+        class="videocontainer2"
+        src="https://www.youtube.com/embed/WHH3FD1ynaY"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+  <!-- <div class="plancontainer">
+    <div class="planpanel">
+      <span class="planpanelheader titleFont">Plus</span>
+      <h4 class="planpanelbandwidth">
+        10 GB of streaming. Around 1000 views of a 1 minute video
+      </h4>
+      <h1 class="planpanelprice priceFont">US$19/mo</h1>
+      <a
+        mat-raised-button
+        class="planpanelbutton"
+        color="primary"
+        href="javascript:void(0)"
+        data-billsby-type="checkout"
+        ><span class="trialText">Start free trial</span></a
+      >
+    </div>
+
+    <div class="planpanel2">
+      <h1 class="planpanelheader titleFont">Pro</h1>
+      <h4 class="planpanelbandwidth">
+        25 GB of streaming. Around 2500 views of a 1 minute video
+      </h4>
+      <h1 class="planpanelprice priceFont">US$49/mo</h1>
+      <a
+        mat-raised-button
+        class="planpanelbutton"
+        color="primary"
+        href="javascript:void(0)"
+        data-billsby-type="checkout"
+        >Start free trial</a
+      >
+    </div>
+
+    <div class="planpanel3">
+      <h1 class="planpanelheader titleFont">Business</h1>
+      <h4 class="planpanelbandwidth">
+        50 GB of streaming. Around 5000 views of a 1 minute video
+      </h4>
+      <h1 class="planpanelprice priceFont">US$99/mo</h1>
+      <a
+        mat-raised-button
+        id="checkout"
+        class="planpanelbutton"
+        color="primary"
+        href="javascript:void(0)"
+        data-billsby-type="checkout"
+        >Start free trial</a
+      >
+    </div>
+  </div> -->
+  <a
+    mat-raised-button
+    id="checkout"
+    class="planpanelbutton"
+    color="primary"
+    href="javascript:void(0)"
+    data-billsby-type="checkout"
+  ></a>
+  <div #embeddedFrame class="exampleShoppableVideo">
+    <!-- <img class="exampleShoppableVideo" (click)="preview()" src="http://res.cloudinary.com/boggssystems/image/upload/v1521154390/rfq8aidi6rsbu0vc67my.png"> -->
+    <span class="exampleVideoText"
+      >Example Shoppable Video with model Christina Bustos</span
+    >
+    <iframe
+      #embeddedIFrame
+      scrolling="no"
+      class="exampleShoppableVideoiFrame"
+      [src]="iFrameSrc | safe"
+      allowfullscreen
+      allow-top-navigation
+    ></iframe>
+  </div>
+</div>

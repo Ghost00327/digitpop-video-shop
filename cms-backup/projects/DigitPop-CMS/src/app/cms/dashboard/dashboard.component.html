@@ -1,0 +1,504 @@
+<div class="container">
+  <div class="toolbar">
+    <section>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button
+              mat-fab
+              matTooltip="Create new project"
+              color="primary"
+              aria-label="Example icon button with a delete icon"
+              (click)="launchProjectWizard()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="projectList">
+    <h3>Projects <mat-icon (click)="projectsHelp()">help</mat-icon></h3>
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+
+    <table
+      mat-table
+      multiTemplateDataRows
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8"
+    >
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="thumbnail">
+        <th mat-header-cell *matHeaderCellDef>
+          <span
+            matTooltip="Thumbnail of shoppable video displayed when launching."
+          >
+            Thumbnail
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="thumbnail" *ngIf="element.thumbnail?.url != null">
+            <img [src]="element.thumbnail?.url" />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          <span matTooltip="Name of the shoppable video."> Name </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span
+            matTooltip="Status of project. Published/Un-published.  If the status is unpublished then the shoppable video will not be available for playing/viewing."
+          >
+            Status
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-slide-toggle
+            class="example-margin"
+            (change)="updateFunc(element, $event)"
+            [color]="color"
+            [(checked)]="element.active"
+          >
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="watchCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span
+            matTooltip="Number of times a video has been launched and watched."
+          >
+            Watches
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stats.videoWatchCount }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pauseCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span
+            matTooltip="Number of times a video has been paused since it was launched."
+          >
+            Pauses
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stats.videoPauseCount }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clickCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span matTooltip="Total number of times a product has been selected.">
+            Clicks
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stats.videoClickCount }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buyNowCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span
+            matTooltip="Total number of times a buy now button for a product has been selected."
+          >
+            Buy Nows
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stats.buyNowClickCount }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span
+            matTooltip="Date of when the shoppable video project was created."
+          >
+            Created
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt | date }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updatedAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span matTooltip="Last time the shoppable video project was updated.">
+            Updated
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.updatedAt | date }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Edit Project"> </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            matTooltip="Edit Project"
+            (click)="onEdit(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="4">
+          <div
+            class="example-element-detail"
+            *ngIf="element.productGroupTimeLine != null"
+            [@detailExpand]="
+              element == expandedElement ? 'expanded' : 'collapsed'
+            "
+          >
+            <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+              <!-- <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              </mat-form-field> -->
+              <table
+                multiTemplateDataRows
+                #innerTables
+                mat-table
+                [dataSource]="element.productGroupTimeLine"
+              >
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span
+                      matTooltip="Name of Product Group.  The product groups are listed in the order they appear in the shoppable video."
+                    >
+                      Product Group Name
+                    </span>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.title }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pauseCount">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span
+                      matTooltip="Total number of times a product group has been on the screen when a viewer interacted, paused the video and the products displayed."
+                    >
+                      Pauses
+                    </span>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.stats.pauseCount }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="clickCount">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <span
+                      matTooltip="Total number of times a product has been selected."
+                    >
+                      Clicks
+                    </span>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.stats.clickCount }}
+                  </td>
+                </ng-container>
+
+                <!-- Product Group Expanded Panel  -->
+                <ng-container matColumnDef="expandedProductGroupDetail">
+                  <td mat-cell *matCellDef="let element" [attr.colspan]="4">
+                    <div
+                      class="example-productGroup-element-detail"
+                      *ngIf="element.products != null"
+                      [@pgDetailExpand]="
+                        element == expandedProductGroupElement
+                          ? 'expanded'
+                          : 'collapsed'
+                      "
+                    >
+                      <div
+                        class="inner-table mat-elevation-z8"
+                        *ngIf="expandedProductGroupElement"
+                      >
+                        <table
+                          #innerTables
+                          mat-table
+                          [dataSource]="element.products"
+                        >
+                          <ng-container matColumnDef="thumbnail">
+                            <th mat-header-cell *matHeaderCellDef>
+                              <span matTooltip="Name of the campaign.">
+                                Thumbnail
+                              </span>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              <div
+                                class="thumbnail"
+                                *ngIf="element.images != null"
+                              >
+                                <img [src]="element.images[0]?.url" />
+                              </div>
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="productName">
+                            <th mat-header-cell *matHeaderCellDef>
+                              <span
+                                matTooltip="Total number of times a product has been selected."
+                              >
+                                Name
+                              </span>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.name }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="productClickCount">
+                            <th mat-header-cell *matHeaderCellDef>
+                              <span
+                                matTooltip="Total number of times a product has been selected."
+                              >
+                                Clicks
+                              </span>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.stats.clickCount }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="clickBuyNowCount">
+                            <th mat-header-cell *matHeaderCellDef>
+                              <span
+                                matTooltip="Total number of times a product has been selected."
+                              >
+                                Buy Now Clicks
+                              </span>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.stats.clickBuyNowCount }}
+                            </td>
+                          </ng-container>
+
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="innerProductDisplayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="
+                              let row;
+                              columns: innerProductDisplayedColumns
+                            "
+                          ></tr>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="innerDisplayedColumns"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let element; columns: innerDisplayedColumns"
+                  class="example-productGroup-element-row"
+                  [class.example-productGroup-expanded-row]="
+                    expandedProductGroupElement === element
+                  "
+                  (click)="
+                    expandedProductGroupElement =
+                      expandedProductGroupElement === element ? null : element
+                  "
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: ['expandedProductGroupDetail']"
+                  class="example-productGroup-detail-row"
+                ></tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: displayedColumns"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="example-detail-row"
+      ></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+
+  <div class="campaignsToolbar">
+    <section>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button
+              mat-fab
+              matTooltip="Create new project"
+              color="primary"
+              aria-label="Example icon button with a delete icon"
+              (click)="launchCampaignsWizard()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="campaignsList">
+    <h3>Campaigns<mat-icon (click)="campaignsHelp()">help</mat-icon></h3>
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+
+    <table
+      mat-table
+      [dataSource]="campaignsDataSource"
+      class="mat-elevation-z8"
+    >
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="project">
+        <th mat-header-cell *matHeaderCellDef>Project</th>
+        <td mat-cell *matCellDef="let element">{{ element.project.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="completionCount">
+        <th class="text-align-right" mat-header-cell *matHeaderCellDef> <span matTooltip="The number times an ad has been run the full length and any gamification has been fulfilled."> Completions </span> </th>
+        <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.completionCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="engagementCount">
+        <th class="text-align-right" mat-header-cell *matHeaderCellDef> <span matTooltip="The number times an ad has been run the full length and any gamification has been fulfilled."> Engagements </span> </th>
+        <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.engagementCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="impressionCount">
+        <th class="text-align-right" mat-header-cell *matHeaderCellDef><span matTooltip="Campaign Impressions.  Measured by how many times an ad has been initiated."> Impressions </span> </th>
+        <td class="text-align-right" mat-cell *matCellDef="let element"> {{element.stats.impressionCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="budgetAmount">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Daily budget of campaign."> Budget </span>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.budgetAmount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="spentAmount">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Total Cost of Campaign"> Total Spend </span>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.spentAmount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Start Date"> Start Date </span>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="audienceId">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Audience of Campaign"> Audience </span>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.audienceId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Status of campaign. Active/Inactive.">
+            Active
+          </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-slide-toggle
+            (change)="updateCampaignFunc(element, $event)"
+            [color]="color"
+            [(checked)]="element.active"
+          >
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="campaignEdit">
+        <th mat-header-cell *matHeaderCellDef>
+          <span matTooltip="Edit Campaign"> </span>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            matTooltip="Edit Campaign"
+            (click)="onCampaignEdit(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+    </table>
+  </div>
+</div>

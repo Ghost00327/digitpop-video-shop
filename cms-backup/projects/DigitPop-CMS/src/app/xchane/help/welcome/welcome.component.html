@@ -1,0 +1,118 @@
+<div>
+  <mat-horizontal-stepper linear="false" #stepper label="Welcome">
+    <mat-step>
+      <div>
+        <ng-template matStepLabel>Welcome</ng-template>
+        <div>
+          <div>
+            <p>
+              Welcome to DigitPop! This is a quick introduction that will show
+              how to earn access to your favorite online media.
+            </p>
+          </div>
+          <div>
+            <img
+              class="welcomeImage"
+              src="https://res.cloudinary.com/boggssystems/image/upload/v1614298624/uxipcdpckkuzbwmpxiv6.png"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Dashboard</ng-template>
+      <div>
+        <div>
+          <p>
+            The Dashboard is where you launch the shoppable video ads to earn
+            points for gift cards for your favorite Video, Music and News. The
+            media provider that you're earning points towards is selected in the
+            rewards section.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600568069/Projects_xk87qs.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Points</ng-template>
+      <div>
+        <div>
+          <p>
+            This is where your point score is. You use the points to earn access
+            to the media providers. The Points are what you earn for completing
+            shoppable video ads. We will show you where to launch the video ads
+            next.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600571747/Capture_Analytics_PGs_f2vahn.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Videos and Categories</ng-template>
+      <div>
+        <div>
+          <p>
+            This is where you launch the video ads to earn points. Watch the
+            video the full way through and answer the question at the end of the
+            video corrrectly in order to receive points. Select a category that
+            you are interested in to launch a video. When you have enough points
+            then you can redeem them for access to media in the next step.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600573545/Capture_Analytics_Products_zwfra8.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Wizard</ng-template>
+      <div>
+        <div>
+          <p>
+            This is where you redeem points for rewards. Select a reward that
+            you have enough points for and an electronic gift card will be sent
+            to your email.
+          </p>
+        </div>
+        <div>
+          <img
+            class="projectsImage"
+            src="https://res.cloudinary.com/boggssystems/image/upload/v1600577359/Project_Wizard_tpmlf7.png"
+          />
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
